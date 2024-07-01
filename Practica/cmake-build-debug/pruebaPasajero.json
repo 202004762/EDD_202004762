@@ -1,0 +1,42 @@
+[
+    {
+        "nombre": "John Doe",
+        "nacionalidad": "Estados Unidos",
+        "numero_de_pasaporte": "A12345678",
+        "vuelo": "A100",
+        "asiento": 12,
+        "destino": "New York",
+        "origen": "Los Angeles",
+        "equipaje_facturado": 2
+    },
+    {
+        "nombre": "Jane Smith",
+        "nacionalidad": "Reino Unido",
+        "numero_de_pasaporte": "B98765432",
+        "vuelo": "A200",
+        "asiento": 5,
+        "destino": "Londres",
+        "origen": "Paris",
+        "equipaje_facturado": 1
+    },
+    {
+        "nombre": "Juan Perez",
+        "nacionalidad": "Canada",
+        "numero_de_pasaporte": "A65136569",
+        "vuelo": "A105",
+        "asiento": 35,
+        "destino": "Guatemala",
+        "origen": "Toronto",
+        "equipaje_facturado": 6
+    },
+    {
+        "nombre": "Federico Valverde",
+        "nacionalidad": "Uruguay",
+        "numero_de_pasaporte": "B65237845",
+        "vuelo": "A205",
+        "asiento": 15,
+        "destino": "Madrid",
+        "origen": "Montevideo",
+        "equipaje_facturado": 9
+    }
+]

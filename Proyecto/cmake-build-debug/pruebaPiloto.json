@@ -1,0 +1,34 @@
+[
+    {
+        "nombre": "John Doe",
+        "nacionalidad": "Estados Unidos",
+        "numero_de_id": "P12345678",
+        "vuelo": "A100",
+        "horas_de_vuelo": 600,
+        "tipo_de_licencia": "PPL"
+    },
+    {
+        "nombre": "Jane Smith",
+        "nacionalidad": "Reino Unido",
+        "numero_de_id": "P98765432",
+        "vuelo": "A200",
+        "horas_de_vuelo": 500,
+        "tipo_de_licencia": "CPL"
+    },
+    {
+        "nombre": "Juan Perez",
+        "nacionalidad": "Canada",
+        "numero_de_id": "P65136569",
+        "vuelo": "A105",
+        "horas_de_vuelo": 300,
+        "tipo_de_licencia": "PPL"
+    },
+    {
+        "nombre": "Federico Valverde",
+        "nacionalidad": "Uruguay",
+        "numero_de_id": "P65237845",
+        "vuelo": "A205",
+        "horas_de_vuelo": 900,
+        "tipo_de_licencia": "CPL"
+    }
+]

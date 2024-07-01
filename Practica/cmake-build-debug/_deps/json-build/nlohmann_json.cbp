@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="nlohmann_json"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake-build-debug\;CMake Files\cmake-build-debug\_deps\;CMake Files\cmake-build-debug\_deps\json-src\;CMake Files\cmake-build-debug\_deps\json-src\cmake\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Practica/cmake-build-debug/_deps/json-build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Practica/cmake-build-debug/_deps/json-build/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Practica/cmake-build-debug/_deps/json-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Practica/cmake-build-debug/_deps/json-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Practica/cmake-build-debug/_deps/json-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Practica/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Practica/cmake-build-debug/_deps/json-src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\json-src\"/>
+		</Unit>
+		<Unit filename="C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Practica/cmake-build-debug/_deps/json-src/cmake/config.cmake.in">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\json-src\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Practica/cmake-build-debug/_deps/json-src/cmake/nlohmann_jsonConfigVersion.cmake.in">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\json-src\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Practica/cmake-build-debug/_deps/json-src/cmake/pkg-config.pc.in">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\json-src\cmake\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

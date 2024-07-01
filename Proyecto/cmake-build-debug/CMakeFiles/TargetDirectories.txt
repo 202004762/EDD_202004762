@@ -1,0 +1,3 @@
+C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir
+C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Proyecto/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Rodas/OneDrive/Documentos/USAC/9no Semestre/Vacaciones/EDD/Lab/Proyecto/cmake-build-debug/CMakeFiles/rebuild_cache.dir

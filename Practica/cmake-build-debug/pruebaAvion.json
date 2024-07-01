@@ -1,0 +1,46 @@
+[
+    {
+        "vuelo": "A100",
+        "numero_de_registro": "N12345",
+        "modelo": "Boeing 737",
+        "fabricante": "Boeing",
+        "ano_fabricacion": 2015,
+        "capacidad": 180,
+        "peso_max_despegue": 79000,
+        "aerolinea": "AirlineX",
+        "estado": "Disponible"
+    },
+    {
+        "vuelo": "A200",
+        "numero_de_registro": "A54321",
+        "modelo": "Airbus A320",
+        "fabricante": "Airbus",
+        "ano_fabricacion": 2018,
+        "capacidad": 150,
+        "peso_max_despegue": 77000,
+        "aerolinea": "AirlineY",
+        "estado": "Mantenimiento"
+    },
+    {
+        "vuelo": "A105",
+        "numero_de_registro": "N67890",
+        "modelo": "Boeing 737",
+        "fabricante": "Boeing",
+        "ano_fabricacion": 2015,
+        "capacidad": 180,
+        "peso_max_despegue": 79000,
+        "aerolinea": "AirlineX",
+        "estado": "Mantenimiento"
+    },
+    {
+        "vuelo": "A205",
+        "numero_de_registro": "A09876",
+        "modelo": "Airbus A320",
+        "fabricante": "Airbus",
+        "ano_fabricacion": 2018,
+        "capacidad": 150,
+        "peso_max_despegue": 77000,
+        "aerolinea": "AirlineY",
+        "estado": "Disponible"
+    }
+]
