@@ -1,3 +1,0 @@
-IngresoEquipajes;
-MantenimientoAviones,Ingreso,N12345;
-MantenimientoAviones,Salida,A54321;

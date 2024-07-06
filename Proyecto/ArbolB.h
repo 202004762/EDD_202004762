@@ -28,10 +28,7 @@ public:
     NodoB* buscar(string numero_de_registro);
     void exportarArbolDot(ArbolB& arbol_b);
     void generarDot(NodoB* nodo, ofstream& archivo);
-
-    Avion* obtenerAvionPorNumeroRegistro(const std::string& numeroRegistro) {
-        return buscarAvionPorNumero(raiz, numeroRegistro);
-    }
+    Avion* obtenerAvionPorNumeroRegistro(const std::string& numeroRegistro);
 
 private:
     void insertarNoLleno(NodoB* nodo, Avion k);
@@ -45,24 +42,8 @@ private:
     void moverClaveSiguiente(NodoB* nodo, int indice);
     void fusionar(NodoB* nodo, int indice);
 
-    Avion* buscarAvionPorNumero(NodoB* nodo, const std::string& numeroRegistro) {
-        if (nodo == nullptr) {
-            return nullptr;
-        }
-
-        int i = 0;
-        while (i < nodo->claves.size() && numeroRegistro > nodo->claves[i].numero_de_registro) {
-            i++;
-        }
-
-        if (i < nodo->claves.size() && nodo->claves[i].numero_de_registro == numeroRegistro) {
-            return &(nodo->claves[i]);
-        }
-
-        return (nodo->hoja) ? nullptr : buscarAvionPorNumero(nodo->hijos[i], numeroRegistro);
-    }
+    Avion* buscarAvionPorNumero(NodoB* nodo, const std::string& numeroRegistro);
 };
 
-
-
 #endif
+

@@ -1,5 +1,0 @@
-digraph G {
-node [shape=record];
-rankdir = LR;
-label = "Cola de Pasajeros";
-}

@@ -8,6 +8,9 @@
 #include "ArbolBBusqueda.h"
 #include "TablaHash.h"
 #include "Grafo.h"
+#include "MatrizDispersa.h"
+#include "ListaAviones.h"
+#include "ListaPilotos.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -18,6 +21,9 @@ ArbolB arbolDisponibles(3);
 ListaCircularDoble listaMantenimiento;
 TablaHash tablaHashPilotos(18);
 Grafo grafo;
+MatrizDispersa matrizDispersa;
+ListaAviones listaTodosAviones;
+ListaPilotos listaTodosPilotos;
 
 void cargarAviones() {
     string nombreArchivo;
@@ -48,6 +54,9 @@ void cargarAviones() {
         } else if (avion.estado == "Mantenimiento") {
             listaMantenimiento.insertar(avion);
         }
+
+        listaTodosAviones.insertar(avion);
+
     }
 
     cout << "Aviones cargados correctamente." << endl;
@@ -81,11 +90,32 @@ void cargarPilotos() {
         arbolPilotos.insertar(piloto);
         tablaHashPilotos.insertar(piloto);
         //tablaHashPilotos.imprimirValorAscii(piloto.numero_de_id);
+        listaTodosPilotos.insertar(piloto);
     }
 
     cout << "Pilotos cargados correctamente." << endl;
     inputFile.close();
 
+}
+
+void compararYAgregarDatosAMatriz() {
+    NodoAvion* nodoAvion = listaTodosAviones.cabeza;
+    while (nodoAvion != nullptr) {
+        //std::cout << "Procesando vuelo: " << nodoAvion->avion.vuelo << std::endl;
+        NodoPiloto* nodoPiloto = listaTodosPilotos.cabeza;
+        bool vueloAgregado = false; // Variable para asegurarse de que cada vuelo se procesa una vez
+        while (nodoPiloto != nullptr && !vueloAgregado) {
+            //std::cout << "Comparando con piloto ID: " << nodoPiloto->piloto.numero_de_id << " y vuelo: " << nodoPiloto->piloto.vuelo << std::endl;
+            if (nodoAvion->avion.vuelo == nodoPiloto->piloto.vuelo) {
+                //std::cout << "Match encontrado! Vuelo: " << nodoAvion->avion.vuelo << ", Piloto ID: " << nodoPiloto->piloto.numero_de_id << ", Ciudad: " << nodoAvion->avion.ciudad_destino << std::endl;
+                matrizDispersa.insertar(nodoPiloto->piloto.numero_de_id, nodoAvion->avion.vuelo, nodoAvion->avion.ciudad_destino);
+                vueloAgregado = true; // Marcar como agregado
+            }
+            nodoPiloto = nodoPiloto->siguiente;
+        }
+        nodoAvion = nodoAvion->siguiente;
+    }
+    std::cout << "Datos comparados y agregados a la matriz dispersa correctamente." << std::endl;
 }
 
 void cargarRutas() {
@@ -118,6 +148,7 @@ void cargarMovimientos() {
             //cout << "Eliminando piloto con ID: " << id << endl; // Depuración
             arbolPilotos.eliminar(id);
             tablaHashPilotos.eliminar(id);
+            matrizDispersa.eliminarPiloto(id);
         } else if (linea.find("MantenimientoAviones,Ingreso,") == 0) {
             cout << "Comando de ingreso de aviones detectado." << endl;
             size_t inicio = 29;
@@ -204,6 +235,12 @@ void mostrarRutas() {
 
 }
 
+void mostrarMatrizDispersa() {
+    cout << "Matriz Dispersa:" << endl;
+    matrizDispersa.mostrar();
+
+}
+
 
 
 int ordenArbol() {
@@ -273,6 +310,8 @@ int main() {
             break;
             case 3:
                 cargarRutas();
+                compararYAgregarDatosAMatriz();
+                //mostrarMatrizDispersa();
                 //mostrarRutas();
             break;
             case 4:
@@ -290,6 +329,7 @@ int main() {
                 tablaHashPilotos.generarArchivoDOT();
                 listaMantenimiento.generarArchivoDOT("ListaAviones");
                 arbolDisponibles.exportarArbolDot(arbolDisponibles);
+                matrizDispersa.graficarMatriz();
             break;
             case 8:
                 cout << "Saliendo del programa..." << endl;

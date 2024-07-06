@@ -65,6 +65,24 @@ NodoBST* ArbolBinarioBusqueda::buscarMinimo(NodoBST* nodo) {
     return actual;
 }
 
+Piloto* ArbolBinarioBusqueda::buscarPilotoPorVuelo(const std::string& vuelo) {
+    return buscarPilotoPorVuelo(raiz, vuelo);
+}
+
+Piloto* ArbolBinarioBusqueda::buscarPilotoPorVuelo(NodoBST* nodo, const std::string& vuelo) {
+    if (nodo == nullptr) {
+        return nullptr;
+    }
+    if (nodo->piloto.vuelo == vuelo) {
+        return &(nodo->piloto);
+    }
+    Piloto* piloto = buscarPilotoPorVuelo(nodo->izquierda, vuelo);
+    if (piloto == nullptr) {
+        piloto = buscarPilotoPorVuelo(nodo->derecha, vuelo);
+    }
+    return piloto;
+}
+
 
 void ArbolBinarioBusqueda::recorridoPreorden() {
     recorridoPreorden(raiz);
@@ -105,7 +123,6 @@ void ArbolBinarioBusqueda::recorridoPostorden(NodoBST* nodo) {
     }
 }
 
-// Declaración de la función generarDot adaptada para BST
 void ArbolBinarioBusqueda::generarDot(NodoBST* nodo, ofstream& archivo, bool isLeft) {
     if (nodo == nullptr) return;
 
@@ -127,7 +144,6 @@ void ArbolBinarioBusqueda::generarDot(NodoBST* nodo, ofstream& archivo, bool isL
     }
 }
 
-// Función para graficar el árbol BST
 void ArbolBinarioBusqueda::graficarBST(ArbolBinarioBusqueda& arbol) {
     string nombreArchivo = "ArbolPilotos.dot";
     ofstream archivo(nombreArchivo);

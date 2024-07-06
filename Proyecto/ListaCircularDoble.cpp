@@ -78,6 +78,19 @@ bool ListaCircularDoble::obtenerAvionPorNumeroRegistro(string numero_de_registro
     return false;
 }
 
+bool ListaCircularDoble::obtenerAvionPorVuelo(string numero_de_vuelo, Avion& avion) {
+    if (cabeza == nullptr) return false;
+    Nodo* temp = cabeza;
+    do {
+        if (temp->avion.vuelo == numero_de_vuelo) {
+            avion = temp->avion;
+            return true;
+        }
+        temp = temp->siguiente;
+    } while (temp != cabeza);
+    return false;
+}
+
 void ListaCircularDoble::generarArchivoDOT(const std::string& archivo) const {
     if (cabeza == nullptr) {
         //std::cout << "Lista vacia. No se puede generar el archivo DOT." << std::endl;

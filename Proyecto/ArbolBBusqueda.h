@@ -24,6 +24,7 @@ public:
     void recorridoPostorden();
     void generarDot(NodoBST* nodo, ofstream& archivo, bool isLeft);
     void graficarBST(ArbolBinarioBusqueda& arbol);
+    Piloto* buscarPilotoPorVuelo(const std::string& vuelo);
 
 
 private:
@@ -33,6 +34,7 @@ private:
     void recorridoPreorden(NodoBST* nodo);
     void recorridoInorden(NodoBST* nodo);
     void recorridoPostorden(NodoBST* nodo);
+    Piloto* buscarPilotoPorVuelo(NodoBST* nodo, const std::string& vuelo);
 };
 
 #endif //ARBOLBBUSQUEDA_H

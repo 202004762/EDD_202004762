@@ -19,4 +19,11 @@ add_executable(Proyecto main.cpp
         TablaHash.cpp
         Grafo.h
         Grafo.cpp
+        MatrizDispersa.h
+        MatrizDispersa.cpp
+        ListaAviones.h
+        ListaAviones.cpp
+        ListaPilotos.h
+        ListaPilotos.cpp
+        ListaPilotos.cpp
 )

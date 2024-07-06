@@ -21,7 +21,8 @@ public:
     void mostrar();
     bool buscar(string numero_de_registro);
     void eliminar(string numero_de_registro);
-    bool obtenerAvionPorNumeroRegistro(string numero_de_registro, Avion& avion); // Nuevo método
+    bool obtenerAvionPorVuelo(string numero_de_vuelo, Avion& avion);
+    bool obtenerAvionPorNumeroRegistro(string numero_de_registro, Avion& avion);
     void generarArchivoDOT(const std::string& archivo) const;
 };
 

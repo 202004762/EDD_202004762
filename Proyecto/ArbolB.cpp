@@ -86,7 +86,6 @@ NodoB* ArbolB::buscar(NodoB* nodo, string numero_de_registro) {
 
 void ArbolB::generarDot(NodoB* nodo, ofstream& archivo) {
     if (nodo != nullptr) {
-        // Generar nodo actual
         archivo << "  node" << nodo << " [label=\"";
         for (size_t i = 0; i < nodo->claves.size(); ++i) {
             archivo << "<f" << i << "> " << nodo->claves[i].numero_de_registro;
@@ -96,7 +95,6 @@ void ArbolB::generarDot(NodoB* nodo, ofstream& archivo) {
         }
         archivo << "\"];\n";
 
-        // Generar enlaces a los hijos
         for (size_t i = 0; i <= nodo->claves.size(); ++i) {
             if (i < nodo->hijos.size() && nodo->hijos[i] != nullptr) {
                 archivo << "  node" << nodo << ":f" << i << " -> node" << nodo->hijos[i] << ";\n";
@@ -122,11 +120,9 @@ void ArbolB::exportarArbolDot(ArbolB& arbol_b) {
     archivo.close();
     cout << "Archivo DOT generado correctamente." << endl;
 
-    // Generar la imagen PNG utilizando Graphviz
     string dotCommand = "dot -Tpng ArbolAviones.dot -o ArbolAviones.png";
     system(dotCommand.c_str());
 
-    // Abrir el archivo PNG generado
     system("start ArbolAviones.png");
 }
 
@@ -145,27 +141,21 @@ void ArbolB::eliminar(NodoB* nodo, string numero_de_registro) {
         i++;
 
     if (i < nodo->claves.size() && nodo->claves[i].numero_de_registro == numero_de_registro) {
-        // Caso 1: El avión está en este nodo y es una hoja
         if (nodo->hoja) {
             nodo->claves.erase(nodo->claves.begin() + i);
-        } else { // Caso 2: El avión está en este nodo y no es una hoja
-            // Encontrar el sucesor en el subárbol derecho
+        } else {
             Avion sucesor = encontrarSucesor(nodo->hijos[i + 1]);
-            // Eliminar el sucesor recursivamente
             eliminar(nodo->hijos[i + 1], sucesor.numero_de_registro);
-            // Reemplazar el avión eliminado con el sucesor
             nodo->claves[i] = sucesor;
         }
-    } else { // Si el avión no está en este nodo
+    } else {
         if (nodo->hoja) {
             cout << "El avion con numero de registro " << numero_de_registro << " no existe en el arbol." << endl;
             return;
         }
 
         bool enUltimoHijo = (i == nodo->claves.size());
-        // Verificar si el hijo donde debería estar el avión tiene menos de orden claves
         if (nodo->hijos[i]->claves.size() < orden) {
-            // Si el hijo tiene menos de orden claves, rellenarlo
             rellenar(nodo, i);
         }
 
@@ -186,13 +176,10 @@ Avion ArbolB::encontrarSucesor(NodoB* nodo) {
 
 void ArbolB::rellenar(NodoB* nodo, int indice) {
     if (indice != 0 && nodo->hijos[indice - 1]->claves.size() >= orden) {
-        // Tomar el avión del nodo hijo anterior y moverlo al nodo actual
         moverClaveAnterior(nodo, indice);
     } else if (indice != nodo->claves.size() && nodo->hijos[indice + 1]->claves.size() >= orden) {
-        // Tomar el avión del nodo hijo siguiente y moverlo al nodo actual
         moverClaveSiguiente(nodo, indice);
     } else {
-        // Fusionar el hijo índice con su hermano
         fusionar(nodo, indice);
     }
 }
@@ -201,16 +188,13 @@ void ArbolB::moverClaveAnterior(NodoB* nodo, int indice) {
     NodoB* hijo = nodo->hijos[indice];
     NodoB* hermano = nodo->hijos[indice - 1];
 
-    // Mover la clave del nodo actual al final del nodo hijo
     hijo->claves.insert(hijo->claves.begin(), nodo->claves[indice - 1]);
 
-    // Si el hijo no es una hoja, mover el último hijo del hermano al principio del nodo hijo
     if (!hijo->hoja) {
         hijo->hijos.insert(hijo->hijos.begin(), hermano->hijos[hermano->claves.size()]);
         hermano->hijos.erase(hermano->hijos.begin() + hermano->hijos.size());
     }
 
-    // Mover la clave del hermano al nodo actual
     nodo->claves[indice - 1] = hermano->claves[hermano->claves.size()];
 }
 
@@ -218,16 +202,13 @@ void ArbolB::moverClaveSiguiente(NodoB* nodo, int indice) {
     NodoB* hijo = nodo->hijos[indice];
     NodoB* hermano = nodo->hijos[indice + 1];
 
-    // Mover la clave del nodo actual al final del nodo hijo
     hijo->claves.push_back(nodo->claves[indice]);
 
-    // Si el hijo no es una hoja, mover el primer hijo del hermano al final del nodo hijo
     if (!hijo->hoja) {
         hijo->hijos.push_back(hermano->hijos[0]);
         hermano->hijos.erase(hermano->hijos.begin());
     }
 
-    // Mover la clave del hermano al nodo actual
     nodo->claves[indice] = hermano->claves[0];
 }
 
@@ -235,10 +216,8 @@ void ArbolB::fusionar(NodoB* nodo, int indice) {
     NodoB* hijo = nodo->hijos[indice];
     NodoB* hermano = nodo->hijos[indice + 1];
 
-    // Mover la clave del nodo actual al final del nodo hijo
     hijo->claves.push_back(nodo->claves[indice]);
 
-    // Mover todas las claves y hijos del hermano al nodo hijo
     for (int i = 0; i < hermano->claves.size(); ++i) {
         hijo->claves.push_back(hermano->claves[i]);
     }
@@ -249,7 +228,27 @@ void ArbolB::fusionar(NodoB* nodo, int indice) {
         }
     }
 
-    // Eliminar el índice del nodo actual y ajustar el tamaño de los hijos
     nodo->hijos.erase(nodo->hijos.begin() + indice + 1);
     nodo->claves.erase(nodo->claves.begin() + indice);
+}
+
+Avion* ArbolB::obtenerAvionPorNumeroRegistro(const std::string& numeroRegistro) {
+    return buscarAvionPorNumero(raiz, numeroRegistro);
+}
+
+Avion* ArbolB::buscarAvionPorNumero(NodoB* nodo, const std::string& numeroRegistro) {
+    if (nodo == nullptr) {
+        return nullptr;
+    }
+
+    int i = 0;
+    while (i < nodo->claves.size() && numeroRegistro > nodo->claves[i].numero_de_registro) {
+        i++;
+    }
+
+    if (i < nodo->claves.size() && nodo->claves[i].numero_de_registro == numeroRegistro) {
+        return &(nodo->claves[i]);
+    }
+
+    return (nodo->hoja) ? nullptr : buscarAvionPorNumero(nodo->hijos[i], numeroRegistro);
 }
